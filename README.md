@@ -1,6 +1,6 @@
 # ember-cli-alex
 
-This README outlines the details of collaborating on this Ember addon.
+[Alex.js](http://alexjs.com/) for [ember-cli](http://ember-cli.com/) apps
 
 ## Installation
 
