@@ -7,12 +7,18 @@ class Alex extends Filter {
   constructor(templatesPath, options) {
     super(templatesPath);
 
-    this.options = options || {};
+    if (options.onComplete) {
+      this.onComplete = options.onComplete;
+    }
   }
 
   processString(content, relativePath) {
     let messages = alex(content).messages;
-    this.options.onComplete(messages);
+    this.onComplete(messages);
+  }
+
+  onComplete(messages) {
+    console.log('hiya from onComplete!');
   }
 }
 

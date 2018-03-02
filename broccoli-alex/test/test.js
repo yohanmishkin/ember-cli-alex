@@ -1,7 +1,8 @@
 
+var Alex = require('..');
 var assert = require('assert');
 var broccoli = require('broccoli');
-var Alex = require('..');
+var walkSync = require('walk-sync');
 
 describe('Broccoli Alex plugin', function() {
 
@@ -27,7 +28,15 @@ describe('Broccoli Alex plugin', function() {
   describe('Tests', function() {
 
     describe('Generated tests', function() {
-      it('correctly handled nested folders', function() {
+
+      it('correctly handled nested folders', async function() {
+
+        let results = await new broccoli.Builder(
+          new Alex('test/fixtures/test-generation')
+        ).build();
+
+        console.log(results);
+        assert.equal(results.length, 3);
       });
       it('generates correct failing test string', function () {
       });
