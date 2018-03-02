@@ -1,6 +1,12 @@
 /* eslint-env node */
 'use strict';
 
-module.exports = {
-  name: 'ember-cli-alex'
-};
+let Filter = require('broccoli-persistent-filter');
+
+class Alex extends Filter {
+
+  constructor() {
+  }
+}
+
+module.exports = Alex;

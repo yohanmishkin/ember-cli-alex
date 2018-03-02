@@ -1,9 +1,13 @@
 
-var expect = chai.expect;
+var Alex = require('..');
 
-let lintErrors;
+let builder, lintErrors;
 
 describe('Broccoli Alex plugin', function() {
+
+  afterEach(function() {
+    builder.cleanup();
+  });
 
   beforeEach(function() {
     lintErrors = [];
@@ -40,8 +44,10 @@ describe('Broccoli Alex plugin', function() {
 });
 
 function buildAndLint(sourcePath) {
-  lintErrors.push({
-    warnings: [],
-    source: ''
-  });
+
+  let tree = new Alex(sourcePath, (err) => { lintErrors.push(err); });
+
+  builder = new broccoli.Builder(tree);
+
+  return bulder.build();
 }
