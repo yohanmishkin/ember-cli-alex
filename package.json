@@ -15,10 +15,12 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember try:each"
+    "test": "karma start"
   },
   "dependencies": {
-    "ember-cli-babel": "^6.3.0"
+    "chai": "^4.1.2",
+    "ember-cli-babel": "^6.3.0",
+    "npm": "^5.7.1"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
@@ -38,7 +40,14 @@
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.14.1",
-    "loader.js": "^4.2.3"
+    "karma": "^2.0.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-mocha": "^1.3.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "loader.js": "^4.2.3",
+    "mocha": "^5.0.1"
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
