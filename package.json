@@ -25,6 +25,8 @@
     "requirejs": "^2.3.5"
   },
   "devDependencies": {
+    "alex": "^5.1.0",
+    "broccoli": "^1.1.4",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^3.0.0",
     "ember-cli": "~2.14.2",
