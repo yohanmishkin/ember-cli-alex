@@ -22,26 +22,41 @@ describe('Broccoli Alex plugin', function() {
         new Alex('test/fixtures/has-errors', { onComplete })
       ).build();
     });
-
   });
 
-  describe('Tests', function() {
+  describe('Generated tests', function() {
 
-    describe('Generated tests', function() {
-
-      it('correctly handled nested folders', async function() {
-
-        let results = await new broccoli.Builder(
-          new Alex('test/fixtures/test-generation')
-        ).build();
-
-        console.log(results);
-        assert.equal(results.length, 3);
-      });
-      it('generates correct failing test string', function () {
-      });
-      it('generates correct passing test string', function () {
+    it('correctly handled nested folders', function() {
+      return runAlex(
+        'test/fixtures/test-generation'
+      ).then(results => {
+        let generatedTests = walkSync(results.outputPath, ['**/*.js']);
+        assert.ok(generatedTests.length, 3, 'generated all 3 tests');
       });
     });
+
+    it('generates correct failing test string', function () {
+    });
+
+    it('generates correct passing test string', function () {
+    });
+
   });
 });
+
+
+function runAlex(sourcePath) {
+  debugger
+  let node = new Alex(sourcePath, {
+    outputPath: sourcePath
+  });
+  let builder = new broccoli.Builder(node);
+
+  let promise = builder.build().then(() => ({
+    outputPath: node.outputPath
+  }));
+
+  // promise.finally(() => { builder.cleanup(); });
+
+  return promise;
+}
