@@ -3,6 +3,7 @@ var Alex = require('..');
 var assert = require('assert');
 var broccoli = require('broccoli');
 var walkSync = require('walk-sync');
+var fs = require('fs');
 
 describe('Broccoli Alex plugin', function() {
 
@@ -36,9 +37,44 @@ describe('Broccoli Alex plugin', function() {
     });
 
     it('generates correct failing test string', function () {
+
+      let expectedTest =
+        "QUnit.module('Alex.js');\n" +
+        "QUnit.test('has-errors.hbs should pass Alex.js', function(assert) {\n" +
+        "  assert.expect(1);\n" +
+        "  assert.ok(false, []);\n" +
+        "});\n";
+
+      return runAlex(
+        'test/fixtures/has-errors'
+      ).then(results => {
+
+        let generatedTest = walkSync(results.outputPath, ['**/*.js']);
+        let testContent = fs.readFileSync(results.outputPath + '/' + generatedTest[0])
+
+        assert.equal(String(testContent).toString(), expectedTest);
+      });
+
     });
 
     it('generates correct passing test string', function () {
+
+      let expectedTest =
+        "QUnit.module('Alex.js');\n" +
+        "QUnit.test('has-errors.hbs should pass Alex.js', function(assert) {\n" +
+        "  assert.expect(1);\n" +
+        "  assert.ok(true, []);\n" +
+        "});\n";
+
+      return runAlex(
+        'test/fixtures/has-errors'
+      ).then(results => {
+
+        let generatedTest = walkSync(results.outputPath, ['**/*.js']);
+        let testContent = fs.readFileSync(results.outputPath + '/' + generatedTest[0])
+
+        assert.equal(String(testContent).toString(), expectedTest);
+      });
     });
 
   });
