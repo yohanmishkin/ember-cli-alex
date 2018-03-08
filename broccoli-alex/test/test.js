@@ -61,13 +61,13 @@ describe('Broccoli Alex plugin', function() {
 
       let expectedTest =
         "QUnit.module('Alex.js');\n" +
-        "QUnit.test('has-errors.hbs should pass Alex.js', function(assert) {\n" +
+        "QUnit.test('no-errors.hbs should pass Alex.js', function(assert) {\n" +
         "  assert.expect(1);\n" +
         "  assert.ok(true, []);\n" +
         "});\n";
 
       return runAlex(
-        'test/fixtures/has-errors'
+        'test/fixtures/no-errors'
       ).then(results => {
 
         let generatedTest = walkSync(results.outputPath, ['**/*.js']);

@@ -22,7 +22,7 @@ Alex.prototype.processString = function processString(content, relativePath) {
   let messages = alex(content).messages;
 
   let generator = testGenerators['qunit'];
-  let passed = true;
+  let passed = messages.length == 0;
   let assertions = [];
 
   // console.log(messages);
