@@ -25,8 +25,6 @@ Alex.prototype.processString = function processString(content, relativePath) {
   let passed = messages.length == 0;
   let assertions = [];
 
-  // console.log(messages);
-
   return (
     generator.suiteHeader('Alex.js') +
     generator.test(relativePath + ' should pass Alex.js', passed, assertions) +

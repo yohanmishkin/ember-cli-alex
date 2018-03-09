@@ -1,12 +1,6 @@
 /* eslint-env node */
 'use strict';
 
-let Filter = require('broccoli-persistent-filter');
+module.exports = {
 
-class Alex extends Filter {
-
-  constructor() {
-  }
-}
-
-module.exports = Alex;
+};
