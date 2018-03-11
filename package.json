@@ -1,12 +1,13 @@
 {
   "name": "ember-cli-alex",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon",
     "ember-cli-alex",
     "alex.js",
-    "broccoli-alex"
+    "broccoli-alex",
+    "lint"
   ],
   "license": "MIT",
   "author": "",
@@ -54,6 +55,7 @@
     "node": "^4.5 || 6.* || >= 7.*"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config"
+    "configPath": "tests/dummy/config",
+    "main": "index.js"
   }
 }
