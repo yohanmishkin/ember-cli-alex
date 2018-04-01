@@ -5,6 +5,7 @@ module.exports = {
   name: 'ember-cli-alex',
 
   init() {
+    this._super.init && this._super.init.apply(this, arguments);
     console.log('init!!!!');
   },
 

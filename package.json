@@ -25,6 +25,7 @@
     "broccoli-persistent-filter": "^1.4.3",
     "chai": "^4.1.2",
     "ember-cli-babel": "^6.3.0",
+    "es6-promise": "^4.2.4",
     "npm": "^5.7.1",
     "requirejs": "^2.3.5"
   },
