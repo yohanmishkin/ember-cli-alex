@@ -19,10 +19,10 @@ describe('ember-cli-alex', function() {
 
 });
 
-
 function emberTest() {
   return new Promise(function(resolve) {
     exec('node_modules\\.bin\\ember test', { cwd: __dirname + '/..', env: process.env }, function (error, stdout, stderr) {
+      console.log(stdout);
       resolve({
         error: error,
         stdout: stdout,
