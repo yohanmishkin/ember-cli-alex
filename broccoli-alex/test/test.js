@@ -82,7 +82,6 @@ describe('Broccoli Alex plugin', function() {
 
 
 function runAlex(sourcePath) {
-  debugger
   let node = new Alex(sourcePath, {
     outputPath: sourcePath
   });

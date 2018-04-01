@@ -8,6 +8,9 @@ module.exports = {
   },
 
   lintTree: function(type, tree) {
-    console.log(tree);
+
+    var Alex = require('./broccoli-alex');
+
+    return new Alex(tree);
   }
 };

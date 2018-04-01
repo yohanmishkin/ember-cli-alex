@@ -12,8 +12,16 @@ describe('ember-cli-alex', function() {
     return emberTest().then((result) => {
       expect(result.error).to.not.exist;
       expect(result.stdout.match(/[^\r\n]+/g))
-        .to.contain('ok 1 PhantomJS 2.1 - Alex.js | application.hbs: should pass Alex.js')
-        .to.not.contain('not ok 11 PhantomJS 2.1 - ESLint | unused.js: should pass ESLint');
+        .to.contain('ok 1 Chrome 65.0 - Alex.js: app.js should pass Alex.js')
+        .to.contain('ok 5 Chrome 65.0 - Alex.js: dummy/templates/application.hbs should pass Alex.js')
+        .to.contain('ok 6 Chrome 65.0 - Alex.js: helpers/destroy-app.js should pass Alex.js')
+        .to.contain('ok 7 Chrome 65.0 - Alex.js: helpers/module-for-acceptance.js should pass Alex.js')
+        .to.contain('ok 8 Chrome 65.0 - Alex.js: helpers/resolver.js should pass Alex.js')
+        .to.contain('ok 9 Chrome 65.0 - Alex.js: helpers/start-app.js should pass Alex.js')
+        .to.contain('ok 10 Chrome 65.0 - Alex.js: index.html should pass Alex.js')
+        .to.contain('ok 11 Chrome 65.0 - Alex.js: resolver.js should pass Alex.js')
+        .to.contain('ok 12 Chrome 65.0 - Alex.js: router.js should pass Alex.js')
+        .to.contain('ok 13 Chrome 65.0 - Alex.js: test-helper.js should pass Alex.js');
     });
   });
 
