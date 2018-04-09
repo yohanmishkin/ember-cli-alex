@@ -18,16 +18,16 @@ describe('ember-cli-alex', function() {
     return emberTest().then((result) => {
       expect(result.error).to.not.exist;
       expect(result.stdout.match(/[^\r\n]+/g))
-        .to.contain('ok 1 Chrome 65.0 - Alex.js: app.js should pass Alex.js')
-        .to.contain('ok 5 Chrome 65.0 - Alex.js: dummy/templates/application.hbs should pass Alex.js')
-        .to.contain('ok 6 Chrome 65.0 - Alex.js: helpers/destroy-app.js should pass Alex.js')
-        .to.contain('ok 7 Chrome 65.0 - Alex.js: helpers/module-for-acceptance.js should pass Alex.js')
-        .to.contain('ok 8 Chrome 65.0 - Alex.js: helpers/resolver.js should pass Alex.js')
-        .to.contain('ok 9 Chrome 65.0 - Alex.js: helpers/start-app.js should pass Alex.js')
-        .to.contain('ok 10 Chrome 65.0 - Alex.js: index.html should pass Alex.js')
-        .to.contain('ok 11 Chrome 65.0 - Alex.js: resolver.js should pass Alex.js')
-        .to.contain('ok 12 Chrome 65.0 - Alex.js: router.js should pass Alex.js')
-        .to.contain('ok 13 Chrome 65.0 - Alex.js: test-helper.js should pass Alex.js');
+        .to.contain('ok 1 Chrome 65.0 - Alex.js | tests: app.js')
+        .to.contain('ok 5 Chrome 65.0 - Alex.js | tests: dummy/templates/application.hbs')
+        .to.contain('ok 6 Chrome 65.0 - Alex.js | tests: helpers/destroy-app.js')
+        .to.contain('ok 7 Chrome 65.0 - Alex.js | tests: helpers/module-for-acceptance.js')
+        .to.contain('ok 8 Chrome 65.0 - Alex.js | tests: helpers/resolver.js')
+        .to.contain('ok 9 Chrome 65.0 - Alex.js | tests: helpers/start-app.js')
+        .to.contain('ok 10 Chrome 65.0 - Alex.js | tests: index.html')
+        .to.contain('ok 11 Chrome 65.0 - Alex.js | tests: resolver.js')
+        .to.contain('ok 12 Chrome 65.0 - Alex.js | tests: router.js')
+        .to.contain('ok 13 Chrome 65.0 - Alex.js | tests: test-helper.js');
     });
   });
 
@@ -38,17 +38,17 @@ describe('ember-cli-alex', function() {
     return emberTest().then(function(result) {
       expect(result.error).to.exist;
       expect(result.stdout.match(/[^\r\n]+/g))
-        .to.contain('ok 1 Chrome 65.0 - Alex.js: app.js should pass Alex.js')
-        .to.contain('ok 5 Chrome 65.0 - Alex.js: dummy/templates/application.hbs should pass Alex.js')
-        .to.contain('ok 6 Chrome 65.0 - Alex.js: helpers/destroy-app.js should pass Alex.js')
-        .to.contain('ok 7 Chrome 65.0 - Alex.js: helpers/module-for-acceptance.js should pass Alex.js')
-        .to.contain('ok 8 Chrome 65.0 - Alex.js: helpers/resolver.js should pass Alex.js')
-        .to.contain('ok 9 Chrome 65.0 - Alex.js: helpers/start-app.js should pass Alex.js')
-        .to.contain('ok 10 Chrome 65.0 - Alex.js: index.html should pass Alex.js')
-        .to.contain('ok 11 Chrome 65.0 - Alex.js: resolver.js should pass Alex.js')
-        .to.contain('ok 12 Chrome 65.0 - Alex.js: router.js should pass Alex.js')
-        .to.contain('ok 13 Chrome 65.0 - Alex.js: test-helper.js should pass Alex.js');
-        // .to.contain('not ok 11 PhantomJS 2.1 - ESLint | unused.js: should pass ESLint');
+        .to.contain('ok 1 Chrome 65.0 - Alex.js | tests: app.js')
+        .to.contain('ok 5 Chrome 65.0 - Alex.js | tests: dummy/templates/application.hbs')
+        .to.contain('not ok 6 Chrome 65.0 - Alex.js | tests: dummy/templates/howinsenstive.hbs')
+        .to.contain('ok 7 Chrome 65.0 - Alex.js | tests: helpers/destroy-app.js')
+        .to.contain('ok 8 Chrome 65.0 - Alex.js | tests: helpers/module-for-acceptance.js')
+        .to.contain('ok 9 Chrome 65.0 - Alex.js | tests: helpers/resolver.js')
+        .to.contain('ok 10 Chrome 65.0 - Alex.js | tests: helpers/start-app.js')
+        .to.contain('ok 11 Chrome 65.0 - Alex.js | tests: index.html')
+        .to.contain('ok 12 Chrome 65.0 - Alex.js | tests: resolver.js')
+        .to.contain('ok 13 Chrome 65.0 - Alex.js | tests: router.js')
+        .to.contain('ok 14 Chrome 65.0 - Alex.js | tests: test-helper.js')
     })
   });
 });
@@ -56,8 +56,6 @@ describe('ember-cli-alex', function() {
 function emberTest() {
   return new Promise(function(resolve) {
     exec('node_modules\\.bin\\ember test', { cwd: __dirname + '/..', env: process.env }, function (error, stdout, stderr) {
-      console.log(stdout);
-      console.log(error);
       resolve({
         error: error,
         stdout: stdout,

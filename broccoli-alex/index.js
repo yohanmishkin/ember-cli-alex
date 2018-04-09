@@ -4,9 +4,9 @@ var broccoliNodeInfo = require('broccoli-node-info');
 var alex = require('alex');
 var testGenerators = require('aot-test-generators');
 
-function Alex(templatesPath, options = {}) {
+function Alex(path, options = {}) {
 
-  Filter.call(this, templatesPath, options);
+  Filter.call(this, path, options);
 
   if (options.onComplete) {
     this.onComplete = options.onComplete;
@@ -26,16 +26,16 @@ Alex.prototype.processString = function processString(content, relativePath) {
 
   if (passed) {
     return (
-      generator.suiteHeader('Alex.js') +
-      generator.test(relativePath + ' passed Alex.js', passed) +
+      generator.suiteHeader('Alex.js | tests') +
+      generator.test(relativePath, passed) +
       generator.suiteFooter()
     );
   }
 
   return (
-    generator.suiteHeader('Alex.js') +
+    generator.suiteHeader('Alex.js | tests') +
     messages.reduce((assertions, current) => {
-      return assertions += generator.test(relativePath + ' should pass Alex.js', passed, current.message)
+      return assertions += generator.test(relativePath, passed, current.message)
     }, '') +
     generator.suiteFooter()
   );

@@ -20,7 +20,7 @@ describe('Broccoli Alex plugin', function() {
       };
 
       await new broccoli.Builder(
-        new Alex('test/fixtures/has-errors', { onComplete })
+        new Alex('broccoli-alex/test/fixtures/has-errors', { onComplete })
       ).build();
     });
   });
@@ -29,7 +29,7 @@ describe('Broccoli Alex plugin', function() {
 
     it('correctly handled nested folders', function() {
       return runAlex(
-        'test/fixtures/test-generation'
+        'broccoli-alex/test/fixtures/test-generation'
       ).then(results => {
         let generatedTests = walkSync(results.outputPath, ['**/*.js']);
         assert.ok(generatedTests.length, 3, 'generated all 3 tests');
@@ -39,18 +39,18 @@ describe('Broccoli Alex plugin', function() {
     it('generates correct failing test string', function () {
 
       let expectedTests =
-        "QUnit.module('Alex.js');\n" +
-        "QUnit.test('has-errors.hbs should pass Alex.js', function(assert) {\n" +
+        "QUnit.module('Alex.js | tests');\n" +
+        "QUnit.test('has-errors.hbs', function(assert) {\n" +
         "  assert.expect(1);\n" +
         "  assert.ok(false, '`boogeyman` may be insensitive, use `boogey` instead');\n" +
         "});\n" +
-        "QUnit.test('has-errors.hbs should pass Alex.js', function(assert) {\n" +
+        "QUnit.test('has-errors.hbs', function(assert) {\n" +
         "  assert.expect(1);\n" +
         String.raw`  assert.ok(false, 'Be careful with \u201Chell\u201D, it\u2019s profane in some cases');` +
         "\n});\n";
 
       return runAlex(
-        'test/fixtures/has-errors'
+        'broccoli-alex/test/fixtures/has-errors'
       ).then(results => {
 
         let generatedTest = walkSync(results.outputPath, ['**/*.js']);
@@ -64,14 +64,14 @@ describe('Broccoli Alex plugin', function() {
     it('generates correct passing test string', function () {
 
       let expectedTest =
-        "QUnit.module('Alex.js');\n" +
-        "QUnit.test('no-errors.hbs passed Alex.js', function(assert) {\n" +
+        "QUnit.module('Alex.js | tests');\n" +
+        "QUnit.test('no-errors.hbs', function(assert) {\n" +
         "  assert.expect(1);\n" +
-        "  assert.ok(true, 'no-errors.hbs passed Alex.js');\n" +
+        "  assert.ok(true, 'no-errors.hbs');\n" +
         "});\n";
 
       return runAlex(
-        'test/fixtures/no-errors'
+        'broccoli-alex/test/fixtures/no-errors'
       ).then(results => {
 
         let generatedTest = walkSync(results.outputPath, ['**/*.js']);
