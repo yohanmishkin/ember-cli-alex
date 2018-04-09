@@ -23,11 +23,20 @@ Alex.prototype.processString = function processString(content, relativePath) {
 
   let generator = testGenerators['qunit'];
   let passed = messages.length == 0;
-  let assertions = [];
+
+  if (passed) {
+    return (
+      generator.suiteHeader('Alex.js') +
+      generator.test(relativePath + ' passed Alex.js', passed) +
+      generator.suiteFooter()
+    );
+  }
 
   return (
     generator.suiteHeader('Alex.js') +
-    generator.test(relativePath + ' should pass Alex.js', passed, assertions) +
+    messages.reduce((assertions, current) => {
+      return assertions += generator.test(relativePath + ' should pass Alex.js', passed, current.message)
+    }, '') +
     generator.suiteFooter()
   );
 }

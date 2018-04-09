@@ -38,12 +38,16 @@ describe('Broccoli Alex plugin', function() {
 
     it('generates correct failing test string', function () {
 
-      let expectedTest =
+      let expectedTests =
         "QUnit.module('Alex.js');\n" +
         "QUnit.test('has-errors.hbs should pass Alex.js', function(assert) {\n" +
         "  assert.expect(1);\n" +
-        "  assert.ok(false, []);\n" +
-        "});\n";
+        "  assert.ok(false, '`boogeyman` may be insensitive, use `boogey` instead');\n" +
+        "});\n" +
+        "QUnit.test('has-errors.hbs should pass Alex.js', function(assert) {\n" +
+        "  assert.expect(1);\n" +
+        String.raw`  assert.ok(false, 'Be careful with \u201Chell\u201D, it\u2019s profane in some cases');` +
+        "\n});\n";
 
       return runAlex(
         'test/fixtures/has-errors'
@@ -52,7 +56,7 @@ describe('Broccoli Alex plugin', function() {
         let generatedTest = walkSync(results.outputPath, ['**/*.js']);
         let testContent = fs.readFileSync(results.outputPath + '/' + generatedTest[0])
 
-        assert.equal(String(testContent).toString(), expectedTest);
+        assert.equal(String(testContent).toString(), expectedTests);
       });
 
     });
@@ -61,9 +65,9 @@ describe('Broccoli Alex plugin', function() {
 
       let expectedTest =
         "QUnit.module('Alex.js');\n" +
-        "QUnit.test('no-errors.hbs should pass Alex.js', function(assert) {\n" +
+        "QUnit.test('no-errors.hbs passed Alex.js', function(assert) {\n" +
         "  assert.expect(1);\n" +
-        "  assert.ok(true, []);\n" +
+        "  assert.ok(true, 'no-errors.hbs passed Alex.js');\n" +
         "});\n";
 
       return runAlex(
