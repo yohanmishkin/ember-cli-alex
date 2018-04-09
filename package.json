@@ -20,7 +20,8 @@
     "build": "ember build",
     "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests",
     "start": "ember serve",
-    "test": "ember try:each"
+    "test:broccoli": "mocha broccoli-alex/test",
+    "test:addon": "mocha node-tests"
   },
   "dependencies": {
     "broccoli-persistent-filter": "^1.4.3",

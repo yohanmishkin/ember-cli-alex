@@ -64,6 +64,20 @@ module.exports = function() {
           npm: {
             devDependencies: {}
           }
+        },
+        {
+          name: 'broccoli-tests',
+          command: ' yarn run test:broccoli',
+          npm: {
+            devDependencies: {}
+          }
+        },
+        {
+          name: 'addon-tests',
+          command: 'yarn run test:addon',
+          npm: {
+            devDependencies: {}
+          }
         }
       ]
     };

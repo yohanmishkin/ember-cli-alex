@@ -1,5 +1,7 @@
 # ember-cli-alex
 
+[![Build Status](https://travis-ci.org/yohanmishkin/ember-cli-alex.svg?branch=master)](https://travis-ci.org/yohanmishkin/ember-cli-alex)
+
 [Alex.js](http://alexjs.com/) for [ember-cli](http://ember-cli.com/) apps
 
 > Whether your own or someone elseâs writing, **alex** helps you find gender favouring, polarising, race related, religion inconsiderate, or other unequal phrasing.
