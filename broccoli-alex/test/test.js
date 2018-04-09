@@ -13,15 +13,15 @@ describe('Broccoli Alex plugin', function() {
       assert.equal(1, 1);
     });
 
-    it('should catch errors', async function() {
+    it('should catch errors', function(done) {
 
       let onComplete = function(results) {
         assert.equal(results.length, 2);
       };
 
-      await new broccoli.Builder(
+      new broccoli.Builder(
         new Alex('broccoli-alex/test/fixtures/has-errors', { onComplete })
-      ).build();
+      ).build().then(done);
     });
   });
 
