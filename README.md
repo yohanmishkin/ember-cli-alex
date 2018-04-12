@@ -1,5 +1,7 @@
 # ember-cli-alex
 
+[![npm version](https://badge.fury.io/js/ember-cli-alex.svg)](http://badge.fury.io/js/ember-cli-alex)
+
 [![Build Status](https://travis-ci.org/yohanmishkin/ember-cli-alex.svg?branch=master)](https://travis-ci.org/yohanmishkin/ember-cli-alex)
 
 [Alex.js](http://alexjs.com/) for [ember-cli](http://ember-cli.com/) apps
