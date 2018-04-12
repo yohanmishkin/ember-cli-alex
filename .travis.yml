@@ -1,50 +1,42 @@
----
 language: node_js
 node_js:
-  # we recommend testing addons with the same minimum supported node version as Ember CLI
-  # so that your addon works for all apps
-  - "6"
-
+- '6'
 sudo: false
 dist: trusty
-
 addons:
   chrome: stable
-
 cache:
   yarn: true
-
 env:
   global:
-    # See https://git.io/vdao3 for details.
-    - JOBS=1
+  - JOBS=1
   matrix:
-    # we recommend new addons test the current and previous LTS
-    # as well as latest stable release (bonus points to beta/canary)
-    - EMBER_TRY_SCENARIO=ember-lts-2.12
-    - EMBER_TRY_SCENARIO=ember-lts-2.16
-    - EMBER_TRY_SCENARIO=ember-lts-2.18
-    - EMBER_TRY_SCENARIO=ember-release
-    - EMBER_TRY_SCENARIO=ember-beta
-    - EMBER_TRY_SCENARIO=ember-canary
-    - EMBER_TRY_SCENARIO=ember-default
-    - EMBER_TRY_SCENARIO=broccoli-tests
-    - EMBER_TRY_SCENARIO=addon-tests
-
+  - EMBER_TRY_SCENARIO=ember-lts-2.12
+  - EMBER_TRY_SCENARIO=ember-lts-2.16
+  - EMBER_TRY_SCENARIO=ember-lts-2.18
+  - EMBER_TRY_SCENARIO=ember-release
+  - EMBER_TRY_SCENARIO=ember-beta
+  - EMBER_TRY_SCENARIO=ember-canary
+  - EMBER_TRY_SCENARIO=ember-default
+  - EMBER_TRY_SCENARIO=broccoli-tests
+  - EMBER_TRY_SCENARIO=addon-tests
 matrix:
   fast_finish: true
   allow_failures:
-    - env: EMBER_TRY_SCENARIO=ember-canary
-
+  - env: EMBER_TRY_SCENARIO=ember-canary
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH=$HOME/.yarn/bin:$PATH
-
+- curl -o- -L https://yarnpkg.com/install.sh | bash
+- export PATH=$HOME/.yarn/bin:$PATH
 install:
-  - yarn install --no-lockfile --non-interactive
-
+- yarn install --no-lockfile --non-interactive
 script:
-  - yarn lint:js
-  # Usually, it's ok to finish the test scenario without reverting
-  #  to the addon's original dependency state, skipping "cleanup".
-  - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip-cleanup
+- yarn lint:js
+- node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip-cleanup
+deploy:
+  provider: npm
+  email: yohanmishkin@protonmail.com
+  api_key:
+    secure: Q2eJV/lyrId+MbaOBm2T3cWQUZYH9lK7nmtdHD7St4EJPFoAWkw2myRlwhL9mPwraeseKk0gAyGMFOAsajji0hxMefERt+Og6gPAz3S6vxEWpB4918APXpxFMlfJXL8I7YUqD2mg0Cm1kjdjanmO/haykeuFFwjZcpabKBArCLgttpUhRaKnrmqFDS2xxNEz6HD278GnIVJDASXERxO5Jfn29SdCOxOkOtbn+Cx8pWmth99iwFY13Qpkgh70/s+GP+ulIkUEMGF/HyMxosyUShpXt6nvq47Flqk3lec8ccB+p6nYwfOYT4RvFgIYefO4n5QEvQ/gqIuNIXM5hligR0bQtWYXH8YLhuaw3+6tamAjvcVeNsnD1D+cB3aXxXaZM1OoLanMS77Ugu1MkpHMeMJLEdcF0pBXDOXCDHp+IRXR1HwhCLpNYtXqHdiFYi23m8t/uROZgPNc5yasuc7w1i/lwBZnP4+6OKDhXiSBgz/6A2T2k4tSnwbYttVjA2wa1EXlbKTtslUt/Nh9hQcYWr/MmjYDM0YmgVLS4GhFvu/zoK/w7TBx+Ty9tSfz7fbVc7m2dkl2lxr1PjRNRswuIXeyqt4iW6bybS3aChJPgoqZx7wqQ1eamQKmHLsG+M1er6/erC9/T71DI0xu/817yQoMqW/oKrOhf0+ysiQzrRc=
+  on:
+    tags: true
+    repo: yohanmishkin/ember-cli-alex
