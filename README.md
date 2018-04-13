@@ -4,11 +4,11 @@
 
 [![Build Status](https://travis-ci.org/yohanmishkin/ember-cli-alex.svg?branch=master)](https://travis-ci.org/yohanmishkin/ember-cli-alex)
 
-[Alex.js](http://alexjs.com/) for [ember-cli](http://ember-cli.com/) apps
+[alex](http://alexjs.com/) for [Ember](http://ember-cli.com/) apps
 
-> Whether your own or someone elseâs writing, **alex** helps you find gender favouring, polarising, race related, religion inconsiderate, or other unequal phrasing.
+> Whether your own or someone else's writing, **alex** helps you find gender favouring, polarising, race related, religion inconsiderate, or other unequal phrasing.
 
-Thanks to [Alex.js](http://alexjs.com/) this ember-cli addon allows you to lint your templates a bit more thoughtfully than you might normally.
+Thanks to [alex](http://alexjs.com/) this ember-cli addon allows you to lint your templates a bit more thoughtfully than you might normally.
 
 
 Installation
