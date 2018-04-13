@@ -1,7 +1,9 @@
 language: node_js
 node_js:
 - '6'
+
 sudo: false
+
 dist: trusty
 
 addons:
@@ -35,35 +37,19 @@ before_install:
 
 install:
 - yarn install --no-lockfile --non-interactive
+- yarn global add auto-dist-tag@0.1.5
 
-stages:
-  - lint
-  - test
-  - deploy
+script:
+- yarn lint:js
+- node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip-cleanup
+- auto-dist-tag --write
 
-jobs:
-  fail_fast: true
-
-  include:
-
-    - stage: lint
-      script:
-      - yarn lint:js
-
-    - stage: test
-      script:
-      - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO --skip-cleanup
-
-    - stage: deploy
-      if: tag IS present
-      node_js: "6"
-      install: yarn global add auto-dist-tag@0.1.5
-      script: auto-dist-tag --write
-      deploy:
-        provider: npm
-        email: yohanmishkin@protonmail.com
-        api_key:
-          secure: Q2eJV/lyrId+MbaOBm2T3cWQUZYH9lK7nmtdHD7St4EJPFoAWkw2myRlwhL9mPwraeseKk0gAyGMFOAsajji0hxMefERt+Og6gPAz3S6vxEWpB4918APXpxFMlfJXL8I7YUqD2mg0Cm1kjdjanmO/haykeuFFwjZcpabKBArCLgttpUhRaKnrmqFDS2xxNEz6HD278GnIVJDASXERxO5Jfn29SdCOxOkOtbn+Cx8pWmth99iwFY13Qpkgh70/s+GP+ulIkUEMGF/HyMxosyUShpXt6nvq47Flqk3lec8ccB+p6nYwfOYT4RvFgIYefO4n5QEvQ/gqIuNIXM5hligR0bQtWYXH8YLhuaw3+6tamAjvcVeNsnD1D+cB3aXxXaZM1OoLanMS77Ugu1MkpHMeMJLEdcF0pBXDOXCDHp+IRXR1HwhCLpNYtXqHdiFYi23m8t/uROZgPNc5yasuc7w1i/lwBZnP4+6OKDhXiSBgz/6A2T2k4tSnwbYttVjA2wa1EXlbKTtslUt/Nh9hQcYWr/MmjYDM0YmgVLS4GhFvu/zoK/w7TBx+Ty9tSfz7fbVc7m2dkl2lxr1PjRNRswuIXeyqt4iW6bybS3aChJPgoqZx7wqQ1eamQKmHLsG+M1er6/erC9/T71DI0xu/817yQoMqW/oKrOhf0+ysiQzrRc=
-        on:
-          tags: true
-          repo: yohanmishkin/ember-cli-alex
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: yohanmishkin@protonmail.com
+  api_key:
+    secure: Q2eJV/lyrId+MbaOBm2T3cWQUZYH9lK7nmtdHD7St4EJPFoAWkw2myRlwhL9mPwraeseKk0gAyGMFOAsajji0hxMefERt+Og6gPAz3S6vxEWpB4918APXpxFMlfJXL8I7YUqD2mg0Cm1kjdjanmO/haykeuFFwjZcpabKBArCLgttpUhRaKnrmqFDS2xxNEz6HD278GnIVJDASXERxO5Jfn29SdCOxOkOtbn+Cx8pWmth99iwFY13Qpkgh70/s+GP+ulIkUEMGF/HyMxosyUShpXt6nvq47Flqk3lec8ccB+p6nYwfOYT4RvFgIYefO4n5QEvQ/gqIuNIXM5hligR0bQtWYXH8YLhuaw3+6tamAjvcVeNsnD1D+cB3aXxXaZM1OoLanMS77Ugu1MkpHMeMJLEdcF0pBXDOXCDHp+IRXR1HwhCLpNYtXqHdiFYi23m8t/uROZgPNc5yasuc7w1i/lwBZnP4+6OKDhXiSBgz/6A2T2k4tSnwbYttVjA2wa1EXlbKTtslUt/Nh9hQcYWr/MmjYDM0YmgVLS4GhFvu/zoK/w7TBx+Ty9tSfz7fbVc7m2dkl2lxr1PjRNRswuIXeyqt4iW6bybS3aChJPgoqZx7wqQ1eamQKmHLsG+M1er6/erC9/T71DI0xu/817yQoMqW/oKrOhf0+ysiQzrRc=
+  on:
+    tags: true
+    repo: yohanmishkin/ember-cli-alex
