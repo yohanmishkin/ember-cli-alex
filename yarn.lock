@@ -1297,7 +1297,7 @@ broccoli-middleware@^1.2.1:
     handlebars "^4.0.4"
     mime-types "^2.1.18"
 
-broccoli-node-info@1.1.0:
+broccoli-node-info@1.1.0, broccoli-node-info@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/broccoli-node-info/-/broccoli-node-info-1.1.0.tgz#3aa2e31e07e5bdb516dd25214f7c45ba1c459412"
 
