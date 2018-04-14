@@ -2,7 +2,7 @@
 
 **[alex](http://alexjs.com/)** for [Ember](http://ember-cli.com/) apps
 
-> Whether your own or someone else's writing, **alex** helps you find gender favouring, polarising, race related, religion inconsiderate, or other unequal phrasing.
+> Whether your own or someone else's writing, **alex** helps you find gender favouring, polarising, race related, religion inconsiderate, or other unequal phrasing.
 
 Thanks to **[alex](http://alexjs.com/)** this ember-cli addon allows you to lint your templates a bit more thoughtfully than you might normally.
 
