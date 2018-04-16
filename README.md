@@ -1,4 +1,4 @@
-# ember-cli-alex &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yohanmishkin/ember-cli-alex/blob/master/LICENSE.md) [![npm version](https://badge.fury.io/js/ember-cli-alex.svg)](http://badge.fury.io/js/ember-cli-alex) [![Build Status](https://travis-ci.org/yohanmishkin/ember-cli-alex.svg?branch=master)](https://travis-ci.org/yohanmishkin/ember-cli-alex)
+# ember-cli-alex &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yohanmishkin/ember-cli-alex/blob/master/LICENSE.md) [![npm version](https://badge.fury.io/js/ember-cli-alex.svg)](http://badge.fury.io/js/ember-cli-alex) [![Build Status](https://travis-ci.org/yohanmishkin/ember-cli-alex.svg?branch=master)](https://travis-ci.org/yohanmishkin/ember-cli-alex)  [![Ember Observer Score](https://emberobserver.com/badges/ember-cli-alex.svg)](https://emberobserver.com/addons/ember-cli-alex)
 
 **[alex](http://alexjs.com/)** for [Ember](http://ember-cli.com/) apps
 
