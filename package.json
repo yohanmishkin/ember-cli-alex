@@ -33,7 +33,7 @@
     "requirejs": "^2.3.6"
   },
   "devDependencies": {
-    "broccoli": "^2.2.0",
+    "broccoli": "^2.3.0",
     "broccoli-asset-rev": "^3.0.0",
     "chai": "^4.2.0",
     "ember-ajax": "^5.0.0",
@@ -63,7 +63,7 @@
     "mocha": "^6.0.2"
   },
   "engines": {
-    "node": "6.* || >= 7.*"
+    "node": "8.* || >= 10.*"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
