@@ -17,26 +17,14 @@ describe('ember-cli-alex', function() {
   it('passes if alex.js tests pass', function() {
     return emberTest().then((result) => {
       expect(result.error).to.not.exist;
-      expect(result.stdout.match(/[^\r\n]+/g))
-        .to.contain('ok 1 Chrome 72.0 - Alex.js | tests: app.js')
-        .to.contain('ok 2 Chrome 72.0 - ESLint | app: app.js')
-        .to.contain('ok 3 Chrome 72.0 - ESLint | app: resolver.js')
-        .to.contain('ok 4 Chrome 72.0 - ESLint | app: router.js')
-        .to.contain('ok 5 Chrome 72.0 - Alex.js | tests: dummy/templates/application.hbs')
-        .to.contain('ok 6 Chrome 72.0 - Alex.js | tests: helpers/destroy-app.js')
-        .to.contain('ok 7 Chrome 72.0 - Alex.js | tests: helpers/module-for-acceptance.js')
-        .to.contain('ok 8 Chrome 72.0 - Alex.js | tests: helpers/resolver.js')
-        .to.contain('ok 9 Chrome 72.0 - Alex.js | tests: helpers/start-app.js')
-        .to.contain('ok 10 Chrome 72.0 - Alex.js | tests: index.html')
-        .to.contain('ok 11 Chrome 72.0 - Alex.js | tests: resolver.js')
-        .to.contain('ok 12 Chrome 72.0 - Alex.js | tests: router.js')
-        .to.contain('ok 13 Chrome 72.0 - Alex.js | tests: test-helper.js')
-        .to.contain('ok 14 Chrome 72.0 - ESLint | tests: helpers/destroy-app.js')
-        .to.contain('ok 15 Chrome 72.0 - ESLint | tests: helpers/module-for-acceptance.js')
-        .to.contain('ok 16 Chrome 72.0 - ESLint | tests: helpers/resolver.js')
-        .to.contain('ok 17 Chrome 72.0 - ESLint | tests: helpers/start-app.js')
-        .to.contain('ok 18 Chrome 72.0 - ESLint | tests: test-helper.js')
-        .to.contain('ok 19 Chrome 72.0 - ember-qunit: Ember.onerror validation: Ember.onerror is functioning properly');
+
+      let testResults = result.stdout.match(/[^\r\n]+/g).filter(testResult => {
+        return testResult.includes('Alex.js | tests');
+      });
+
+      for (let testOutput of testResults) {
+        expect(testOutput).to.match(/^ok/);
+      }
     });
   });
 
@@ -46,18 +34,26 @@ describe('ember-cli-alex', function() {
 
     return emberTest().then(function(result) {
       expect(result.error).to.exist;
-      expect(result.stdout.match(/[^\r\n]+/g))
-        .to.contain('ok 1 Chrome 72.0 - Alex.js | tests: app.js')
-        .to.contain('ok 5 Chrome 72.0 - Alex.js | tests: dummy/templates/application.hbs')
-        .to.contain('not ok 6 Chrome 72.0 - Alex.js | tests: dummy/templates/howinsenstive.hbs')
-        .to.contain('ok 7 Chrome 72.0 - Alex.js | tests: helpers/destroy-app.js')
-        .to.contain('ok 8 Chrome 72.0 - Alex.js | tests: helpers/module-for-acceptance.js')
-        .to.contain('ok 9 Chrome 72.0 - Alex.js | tests: helpers/resolver.js')
-        .to.contain('ok 10 Chrome 72.0 - Alex.js | tests: helpers/start-app.js')
-        .to.contain('ok 11 Chrome 72.0 - Alex.js | tests: index.html')
-        .to.contain('ok 12 Chrome 72.0 - Alex.js | tests: resolver.js')
-        .to.contain('ok 13 Chrome 72.0 - Alex.js | tests: router.js')
-        .to.contain('ok 14 Chrome 72.0 - Alex.js | tests: test-helper.js')
+
+      let testResults = result.stdout.match(/[^\r\n]+/g).filter(testResult => {
+        return testResult.includes('Alex.js | tests');
+      });
+
+      let passingTests = testResults.filter(result => {
+        return result.match(/^ok/);
+      });
+
+      for (let testOutput of passingTests) {
+        expect(testOutput).to.match(/^ok/);
+      }
+
+      let failingTests = testResults.filter(result => {
+        return result.match(/^not ok/);
+      });
+
+      for (let testOutput of failingTests) {
+        expect(testOutput).to.match(/^not ok/);
+      }
     })
   });
 });
