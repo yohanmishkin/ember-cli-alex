@@ -1,11 +1,8 @@
-
-var Filter = require('broccoli-filter');
-var broccoliNodeInfo = require('broccoli-node-info');
 var alex = require('alex');
+var Filter = require('broccoli-filter');
 var testGenerators = require('aot-test-generators');
 
 function Alex(path, options = {}) {
-
   Filter.call(this, path, options);
 
   if (options.onComplete) {
@@ -35,12 +32,16 @@ Alex.prototype.processString = function processString(content, relativePath) {
   return (
     generator.suiteHeader('Alex.js | tests') +
     messages.reduce((assertions, current) => {
-      return assertions += generator.test(relativePath, passed, current.message)
+      return (assertions += generator.test(
+        relativePath,
+        passed,
+        current.message
+      ));
     }, '') +
     generator.suiteFooter()
   );
-}
+};
 
 Alex.prototype.getDestFilePath = function getDestFilePath(relativePath) {
   return `${relativePath}.alex-test.js`;
-}
+};
