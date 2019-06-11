@@ -28,7 +28,7 @@
   "devDependencies": {
     "alex": "^7.1.0",
     "aot-test-generators": "^0.1.0",
-    "broccoli": "^2.3.0",
+    "broccoli": "^3.1.0",
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-filter": "^1.3.0",
     "broccoli-node-info": "^1.1.0",
