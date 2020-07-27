@@ -26,7 +26,7 @@
     "test:all": "yarn test:broccoli && yarn test:addon"
   },
   "devDependencies": {
-    "alex": "^7.1.0",
+    "alex": "^8.2.0",
     "aot-test-generators": "^0.1.0",
     "broccoli": "^3.1.0",
     "broccoli-asset-rev": "^3.0.0",
